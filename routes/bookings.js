@@ -29,16 +29,17 @@ newBooking.save().then(() => res.json({ result: true }))
 
 /* UPDATE booking. */
 router.put("/update", (req, res) => {
-    const { _id } = req.body
-
-    Booking.findOne({ _id }).then((tripFound) => {
-        if (!tripFound) {
-            return res.json({ result: false, error: "Trip not found" })
-        } else {
-            Booking.updateOne({ _id }, { isPaid: true }).then((tripUpdated) => {
-                return res.json({ result: true, tripUpdated })
-            })
-        }
+    // Booking.find({ isPaid : false }).then((tripFound) => {
+    //     if (!tripFound) {
+    //         return res.json({ result: false, error: "Trip not found" })
+    //     } else {
+    //         Booking.updateMany({ isPaid : false }, { isPaid: true }).then((tripUpdated) => {
+    //             return res.json({ result: true, tripUpdated })
+    //         })
+    //     }
+    // })
+    Booking.updateMany({ isPaid : false }, { isPaid: true }).then((tripUpdated) => {
+        return res.json({ result: true, tripUpdated })
     })
 })
 

@@ -43,10 +43,14 @@ router.put("/update", (req, res) => {
 })
 
 /* DELETE booking */
-router.delete("/delete", (req, res) => {
-    Booking.deleteMany({ isPaid: false }).then((tripsDeleted) => {
-        return res.json({ result: true, tripsDeleted })
-       });
+router.delete("/delete/:id", (req, res) => {
+    Booking.deleteOne({ _id: req.params.id}).then(data => {
+        if (data.deletedCount != 0) {
+            res.json({ result: true, bookings: data });
+        } else {
+            res.json({ result: false, error: "Booking not found" });
+        }
+    })
 })
 
 module.exports = router;

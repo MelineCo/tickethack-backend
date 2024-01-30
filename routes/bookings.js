@@ -3,9 +3,17 @@ var router = express.Router();
 const Booking = require('../models/bookings');
 const moment = require('moment')
 
-/* GET bookings listing */
+/* GET bookings unpaid listing */
 router.get('/', function (req, res) {
     Booking.find( {isPaid : false})
+      .then((data) => {
+        res.json({ result: true, AllBookings: data })
+      })
+  });
+
+  /* GET bookings paid listing */
+router.get('/booked', function (req, res) {
+    Booking.find( {isPaid : true})
       .then((data) => {
         res.json({ result: true, AllBookings: data })
       })

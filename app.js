@@ -18,11 +18,9 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Remplacee 'allowedOrigins' avec vos différents URLs front pouvant accéder au Backend
     const allowedOrigins = [
+      "http://localhost:3000",
       "http://localhost:4000",
-      "http://localhost:4001",
-      "https://www.tablee.app",
-      "http://192.168.0.35:4000",
-      "http://192.168.0.35:4001"
+      "http://localhost:4001"
     ];
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);

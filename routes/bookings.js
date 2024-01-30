@@ -5,7 +5,7 @@ const moment = require('moment')
 
 /* GET bookings listing */
 router.get('/', function (req, res) {
-    Booking.find()
+    Booking.find( {isPaid : false})
       .then((data) => {
         res.json({ result: true, AllBookings: data })
       })

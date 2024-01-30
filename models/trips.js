@@ -14,4 +14,4 @@ const Trip = mongoose.model('trips', tripSchema);
 module.exports = Trip;
 
 // Pour export du modele : 
-// const Trip = require('./models/trips');
+// const Trip = require('../models/trips');

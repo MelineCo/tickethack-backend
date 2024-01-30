@@ -3,6 +3,14 @@ var router = express.Router();
 const Booking = require('../models/bookings');
 const moment = require('moment')
 
+/* GET bookings listing */
+router.get('/', function (req, res) {
+    Booking.find()
+      .then((data) => {
+        res.json({ result: true, AllBookings: data })
+      })
+  });
+
 /* CREATE booking. */
 router.post('/new', function (req, res) {
   const { departure, arrival, date, price } = req.body

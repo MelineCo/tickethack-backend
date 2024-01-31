@@ -15,7 +15,7 @@ router.get('/:departure/:arrival/:date', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
-  Trip.findById({ req.params.id })
+  Trip.findById( req.params.id )
     .then((trip) => {
       console.log(trip)
       res.json({ result: true, trip: trip })

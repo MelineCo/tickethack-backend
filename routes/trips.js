@@ -14,6 +14,14 @@ router.get('/:departure/:arrival/:date', function (req, res) {
     })
 });
 
+router.get('/:id', function (req, res) {
+  Trip.findOne({ _id : req.params.id })
+    .then((trip) => {
+      console.log(trip)
+      res.json({ result: true, trip: trip })
+    })
+});
+
 module.exports = router;
 
 // router.get('/', function (req, res) {

@@ -47,6 +47,7 @@ router.put("/update", (req, res) => {
     //     }
     // })
     Booking.updateMany({ isPaid : false }, { isPaid: true }).then((tripUpdated) => {
+        console.log("updated to true")
         return res.json({ result: true, tripUpdated })
     })
 })

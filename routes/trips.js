@@ -6,7 +6,8 @@ const moment = require('moment')
 /* GET trips listing. */
 router.get('/:departure/:arrival/:date', function (req, res) {
   const { departure, arrival, date } = req.params
-  Trip.find({ departure: departure, arrival: arrival })
+  console.log(date)
+  Trip.find({ departure:{ $regex: new RegExp(departure, 'i') } , arrival: { $regex: new RegExp(arrival, 'i') }})
     .then((data) => {
       let newdate = new Date(date)
       const trips = data.filter(e => moment(Number(e.date)).format("YYYY-MM-DD") === moment(Number(newdate)).format("YYYY-MM-DD"))
